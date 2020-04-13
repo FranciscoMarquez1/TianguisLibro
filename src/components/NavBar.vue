@@ -1,14 +1,8 @@
 <template>
-    <div class="row">
-        <h1 class="col">Hola maxi</h1>
-        <h1 class="col">Hola maxi</h1>
+    <div class="header">
 
-        <div>
-            <b-button>Button</b-button>
-            <b-button variant="danger">Button</b-button>
-            <b-button variant="success">Button</b-button>
-            <b-button variant="outline-primary">Button</b-button>
-        </div>
+        <img class="logo" src="../assets/libro-logo.png"/>
+        <h1 class="title">Tianguis del libro</h1>
     </div>
 
 </template>
@@ -20,5 +14,17 @@ export default {
 </script>
 
 <style>
-
+.header {
+    background-color: #f6d186;
+    height: 70px;
+    padding-top:10px;
+}
+.logo {
+    height: 34px;
+}
+.title {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 10px;
+}
 </style>

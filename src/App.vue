@@ -1,15 +1,30 @@
 <template>
   <div id="app">
     <NavBar/>
+    <div class="row">
+        <div class="col-8" style="overflow: auto; height: auto;">
+          <BookCard/>
+          <BookCard/>
+          <BookCard/>
+          <BookCard/>
+
+        </div>
+          <SideBar/>
+    </div>      
   </div>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
+import SideBar from "./components/SideBar.vue";
+import BookCard from "./components/BookCard.vue";
+
 export default {
   name: 'app',
    components: {
-    NavBar
+    NavBar,
+    SideBar,
+    BookCard,
   },
   data () {
     return {
@@ -28,7 +43,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 h1, h2 {
@@ -47,5 +61,9 @@ li {
 
 a {
   color: #42b983;
+}
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 </style>
