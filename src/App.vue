@@ -2,12 +2,11 @@
   <div id="app">
     <NavBar/>
     <div class="row">
-        <div class="col-8" style="overflow: auto; height: auto;">
-          <BookCard/>
-          <BookCard/>
-          <BookCard/>
-          <BookCard/>
-
+        <div class="col-8">
+        <ul>
+         <BookCard v-for="card in cards" :info="card">
+         </BookCard>
+        </ul>
         </div>
           <SideBar/>
     </div>      
@@ -19,6 +18,8 @@ import NavBar from "./components/NavBar.vue";
 import SideBar from "./components/SideBar.vue";
 import BookCard from "./components/BookCard.vue";
 
+const axios = require("axios");
+
 export default {
   name: 'app',
    components: {
@@ -26,10 +27,15 @@ export default {
     SideBar,
     BookCard,
   },
-  data () {
+  data: function () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      cards: null
     }
+  },
+  mounted() {
+    axios
+      .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis')
+      .then(response => (this.cards=response.data));
   }
 }
 

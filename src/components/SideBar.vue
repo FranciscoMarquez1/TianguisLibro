@@ -1,19 +1,20 @@
 <template>
     <div class="col-4">
         <div class="column-info">
-            <h1>Reglamento</h1>
             <h2>Proceso de Intercambio</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Nam sodales nisl sed orci luctus molestie.
-                Curabitur id lacus sit amet tortor aliquam viverra.
-                Duis eget nulla vestibulum, iaculis ligula nec, lacinia ex.
-                Pellentesque accumsan erat in magna lobortis consectetur.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Nam sodales nisl sed orci luctus molestie.
-Curabitur id lacus sit amet tortor aliquam viverra.
-
-            </p>
+            <h3>Buscar libro</h3>
+            <ul>
+                <li>Si buscas un libro aqui se mostraran todos aquellos que esten disponibles, puedes utilizar los filtros para buscar mas facil.</li>
+                <li>En lo que encuentres el libro deseado haz click en el logo de whatsapp para enviar un mensaje al dueño del libro.</li>
+            </ul>
+            <h3>Subir libro</h3>
+            <ul>
+                <li>Para subir un libro, haz click en el boton siguiente y encargate de llenar todos los datos requeridos.</li>
+                <li>Para agregarlo a tu catalogo, haz click en el boton siguiente y encargate de llenar todos los datos requeridos.</li>
+            </ul>
             <button>Subir Libro</button>
+            <button>Vender Libro</button>
+
         </div>
     </div>
 

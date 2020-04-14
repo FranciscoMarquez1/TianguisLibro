@@ -2,14 +2,18 @@
     <div class="card">
         <div class="row">
             <div class="col-6">
-                <p>Title: <span>Geometria Analitica</span></p>
-                <p>Subject: <span>Matematics</span></p>
-                <p>Price: <span>$800</span></p>
-                <p>ISBN: <span>asdasdasd</span></p>
+                <p>Title: {{info.Title}}</p>
+                <p>Subject: {{info.Subject}}</p>
+                <p>Price: ${{info.price}}</p>
+                <p>ISBN: {{info.ISBN}}</p>
             </div>
             <div class="col-6">
-                <p>Maximo Bautista</p>
+                <p>{{info.Username}}</p>
+                <a v-bind:href="'https://wa.me/' + info.phone">
                 <img class="whatsapp" src="../assets/whatsapp-logo.png">
+                </a>
+                <p style="padding-top: 10px">Phone: {{info.phone}}</p>
+
 
             </div>
         </div>
@@ -20,6 +24,9 @@
 <script>
 export default {
     name: 'BookCard',
+    props: {
+        info: Object
+    }
 }
 </script>
 
@@ -31,8 +38,9 @@ export default {
     margin-top: 40px;
     margin-bottom: 40px;
     padding-top: 10px;
+    border-radius: 20px;
 }
 .whatsapp {
-    height: 64px;   
+    height: 44px;   
 }
 </style>
