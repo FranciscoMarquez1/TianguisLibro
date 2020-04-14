@@ -2,9 +2,9 @@
     <div class="card">
         <div class="row">
             <div class="col-6">
-                <p>Title: {{info.Title}}</p>
-                <p>Subject: {{info.Subject}}</p>
-                <p>Price: ${{info.price}}</p>
+                <p>Titulo: {{info.Title}}</p>
+                <p>Área: {{info.Subject}}</p>
+                <p>Precio: ${{info.price}}</p>
                 <p>ISBN: {{info.ISBN}}</p>
             </div>
             <div class="col-6">

@@ -3,6 +3,8 @@
     <NavBar/>
     <div class="row">
         <div class="col-8">
+          <!--<b-form-select v-model="selected" :options="options"></b-form-select>-->
+        <button v-on:click="opt">hola</button>
         <ul>
          <BookCard v-for="card in cards" :info="card">
          </BookCard>
@@ -29,14 +31,24 @@ export default {
   },
   data: function () {
     return {
-      cards: null
+      cards: null,
+      selected: null,
+      options: [],
     }
   },
   mounted() {
     axios
       .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis')
       .then(response => (this.cards=response.data));
-  }
+  },
+  methods: {
+    opt: function(){
+      for (var i = 0; i < this.cards.length; i++){
+          if(!this.options.includes(this.cards[i].Subject))
+              this.options.push(this.cards[i].Subject);
+      }
+    }
+  },
 }
 
 
