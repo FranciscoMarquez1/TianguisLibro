@@ -1,16 +1,16 @@
 <template>
   <div id="app">
+  <!--<button v-on:click="isLogged = !isLogged">Change isLogged</button>-->
     <NavBar/>
     <div class="row">
         <div class="col-8">
-          <!--<b-form-select v-model="selected" :options="options"></b-form-select>-->
-        <button v-on:click="opt">hola</button>
+          <b-form-select v-model="selected" :options="options"></b-form-select>
         <ul>
-         <BookCard v-for="card in cards" :info="card">
+         <BookCard v-for="card in activeCards" :info="card">
          </BookCard>
         </ul>
         </div>
-          <SideBar/>
+          <SideBar :user="this.Username" :islogged="this.isLogged"/>
     </div>      
   </div>
 </template>
@@ -31,15 +31,37 @@ export default {
   },
   data: function () {
     return {
-      cards: null,
+      cards: [],
       selected: null,
-      options: [],
+      options: [{ value: null, text: 'Filtrar Categorias' }],
+      Username: 'ChebaCheba',
+      isLogged: false,
     }
   },
-  mounted() {
+  created() {
     axios
       .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis')
-      .then(response => (this.cards=response.data));
+      .then(response => (this.cards=response.data))
+      .then(this.opt());
+  },
+  updated() {
+    this.opt()
+  },
+  computed: {
+    activeCards: function() {
+      if (this.selected == null){
+        return this.cards
+      }
+      else{
+        let filtradas = [];
+        for (var i = 0; i < this.cards.length; i++){
+          if (this.cards[i].Subject == this.selected){
+            filtradas.push(this.cards[i]);
+          }
+        }
+        return filtradas;
+      }
+    }
   },
   methods: {
     opt: function(){
@@ -83,5 +105,9 @@ a {
 .row {
   margin-left: 0px;
   margin-right: 0px;
+}
+.custom-select {
+  margin-top: 20px;
+  width: 30%;
 }
 </style>
