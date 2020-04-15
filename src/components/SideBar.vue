@@ -12,7 +12,7 @@
                 <li>Para subir un libro no existente, haz click en el boton 'Subir Libro' y encargate de llenar todos los datos requeridos.</li>
                 <li>Para agregarlo a tu catalogo, haz click en el boton 'Vender Libro' y encargate de llenar todos los datos requeridos.</li>
             </ul>
-            <b-button v-b-modal.modal-1 v-bind:disabled='!this.isLogged'>Subir Libro</b-button>
+            <b-button v-b-modal.modal-1 :disabled='isDisabled'>Subir Libro</b-button>
 
             <b-modal id="modal-1" title="Subir Libro" hide-footer>
                 <b-form>
@@ -27,7 +27,7 @@
                 <b-button class="mt-3" block @click="uploadLibro">Upload</b-button>
 
             </b-modal>            
-            <b-button v-b-modal.modal-2 v-bind:disabled='!isLogged'>Vender Libro</b-button>
+            <b-button v-b-modal.modal-2 :disabled='isDisabled'>Vender Libro</b-button>
 
             <b-modal id="modal-2" title="Vender Libro" hide-footer>
                 <b-form>
@@ -97,6 +97,12 @@ export default {
                 this.$bvModal.hide('modal-2');
             }
         },
+    },
+    computed:{
+        isDisabled: function(){
+            console.log("cambio");
+    	    return !this.isLogged;
+        }
     },
  
 }

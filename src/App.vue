@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <!--<button v-on:click="isLogged = !isLogged">Change isLogged</button>-->
+ <!-- <button v-on:click="isLogged = !isLogged">Change isLogged</button>-->
     <NavBar/>
     <div class="row">
         <div class="col-8">
@@ -10,7 +10,7 @@
          </BookCard>
         </ul>
         </div>
-          <SideBar :user="this.Username" :islogged="this.isLogged"/>
+          <SideBar :user="this.Username" :isLogged="this.isLogged"/>
     </div>      
   </div>
 </template>
