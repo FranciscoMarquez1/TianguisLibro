@@ -2,7 +2,8 @@
     <div class="header">
 
         <img class="logo" src="../assets/libro-logo.png"/>
-        <h1 class="title">Tianguis del libro</h1>
+        <router-link class="title" to="/">Tianguis del Libro</router-link>
+        <router-link to="/login">Login</router-link>
     </div>
 
 </template>

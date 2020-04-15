@@ -1,33 +1,18 @@
 <template>
   <div id="app">
  <!-- <button v-on:click="isLogged = !isLogged">Change isLogged</button>-->
-    <NavBar/>
-    <div class="row">
-        <div class="col-8">
-          <b-form-select v-model="selected" :options="options"></b-form-select>
-        <ul>
-         <BookCard v-for="card in activeCards" :info="card">
-         </BookCard>
-        </ul>
-        </div>
-          <SideBar :user="this.Username" :isLogged="this.isLogged"/>
-    </div>      
+    <NavBar></NavBar>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
-import SideBar from "./components/SideBar.vue";
-import BookCard from "./components/BookCard.vue";
-
-const axios = require("axios");
 
 export default {
   name: 'app',
    components: {
-    NavBar,
-    SideBar,
-    BookCard,
+    NavBar
   },
   data: function () {
     return {
@@ -36,39 +21,6 @@ export default {
       options: [{ value: null, text: 'Filtrar Categorias' }],
       Username: 'ChebaCheba',
       isLogged: false,
-    }
-  },
-  created() {
-    axios
-      .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis')
-      .then(response => (this.cards=response.data))
-      .then(this.opt());
-  },
-  updated() {
-    this.opt()
-  },
-  computed: {
-    activeCards: function() {
-      if (this.selected == null){
-        return this.cards
-      }
-      else{
-        let filtradas = [];
-        for (var i = 0; i < this.cards.length; i++){
-          if (this.cards[i].Subject == this.selected){
-            filtradas.push(this.cards[i]);
-          }
-        }
-        return filtradas;
-      }
-    }
-  },
-  methods: {
-    opt: function(){
-      for (var i = 0; i < this.cards.length; i++){
-          if(!this.options.includes(this.cards[i].Subject))
-              this.options.push(this.cards[i].Subject);
-      }
     }
   },
 }
