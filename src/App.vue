@@ -1,6 +1,6 @@
 <template>
   <div id="app">
- <!-- <button v-on:click="isLogged = !isLogged">Change isLogged</button>-->
+
     <NavBar></NavBar>
       <router-view></router-view>
   </div>
@@ -13,19 +13,8 @@ export default {
   name: 'app',
    components: {
     NavBar
-  },
-  data: function () {
-    return {
-      cards: [],
-      selected: null,
-      options: [{ value: null, text: 'Filtrar Categorias' }],
-      Username: 'ChebaCheba',
-      isLogged: false,
-    }
-  },
+  }
 }
-
-
 </script>
 
 <style>

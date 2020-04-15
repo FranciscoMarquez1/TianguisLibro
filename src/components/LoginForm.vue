@@ -12,6 +12,7 @@
 
                 <b-button variant="primary" v-on:click="login">Log In</b-button>
                 <b-button variant="primary" v-on:click="showSignUp">Register</b-button>
+                {{user}}
             </b-form>
             <b-form v-if="showRegister">
                 <b-form-group id="input-group-1" label="Username:" label-for="input-1">
@@ -51,9 +52,12 @@
                     username: '',
                     password: '',
                 },
-
                 showLogin: true,
-                showRegister: false
+                showRegister: false,
+                user: {
+                    username: '',
+                    phone: ''
+                }
             }
         },
         methods: {
@@ -62,13 +66,13 @@
                axios
                   .post('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formRegister.username+"&Hash="+hash+"&Tel="+this.formRegister.phone)
                     .then(response => (console.log(response.data)));
-                console.log(hash)
             },
             login() {
                 const hash = sha256(this.formLogin.password);
                 axios
-                    .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formRegister.username+"&Hash="+hash+"&Tel="+this.formRegister.phone)
-                    .then(response => (console.log(response.data)));
+                    .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formLogin.username+"&Hash="+hash)
+                    .then(response => (console.log(response)));
+                console.log('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formRegister.username+"&Hash="+hash)
 
             },
             showSignUp(){
