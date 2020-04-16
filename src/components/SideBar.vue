@@ -14,7 +14,7 @@
             </ul>
             <b-button v-b-modal.modal-1 :disabled='isDisabled'>Subir Libro</b-button>
 
-            <b-modal id="modal-1" title="Subir Libro" hide-footer>
+            <b-modal id="modal-1" title="Subir Libro" hide-footer @hide="emptyError">
                 <b-form>
                     <label>Titulo:</label><br>
                     <b-form-input type="text" v-model="Titulo"></b-form-input>
@@ -29,13 +29,13 @@
             </b-modal>            
             <b-button v-b-modal.modal-2 :disabled='isDisabled'>Vender Libro</b-button>
 
-            <b-modal id="modal-2" title="Vender Libro" hide-footer>
+            <b-modal id="modal-2" title="Vender Libro" hide-footer @hide="emptyError">
                 <b-form>
                     <label>ISBN:</label><br>
                     <b-form-input type="text" v-model="ISBN"></b-form-input>
-                    <label>Price:</label><br>
+                    <label>Precio:</label><br>
                     <b-form-input type="text" v-model="Price"></b-form-input>
-                    <label>Location:</label><br>
+                    <label>Ubicación:</label><br>
                     <b-form-input type="text" v-model="Location"></b-form-input>
                 </b-form>  
                 <p style="color: red; padding-top: 5px;"> {{error}}</p>
@@ -97,6 +97,9 @@ export default {
 
                 this.$bvModal.hide('modal-2');
             }
+        },
+        emptyError: function(){
+            this.error = "";
         },
     },
     computed:{

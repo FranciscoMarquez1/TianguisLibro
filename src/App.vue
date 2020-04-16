@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <NavBar></NavBar>
+    <NavBar :isLoggedIn="this.currentUser.isLoggedIn"></NavBar>
       <router-view v-on:UserObtained="setUser($event)" v-bind="myProps"></router-view>
   </div>
 </template>
@@ -38,6 +38,8 @@ export default {
   computed: {
     myProps() {
       if (this.$route.name === 'Home') { return { Username: this.currentUser.username, isLogged: this.currentUser.isLoggedIn}}
+      if (this.$route.name === 'Profile') { return { Username: this.currentUser.username}}
+
     }
   },
 }

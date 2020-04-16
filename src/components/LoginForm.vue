@@ -6,7 +6,7 @@
                     <b-form-input id="input-login1" v-model="formLogin.username" type="text" required placeholder="Enter username"></b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-login-2" label="Password:" label-for="input-login2" description="this.AuthError">
+                <b-form-group id="input-login-2" label="Password:" label-for="input-login2" v-bind:description="AuthError">
                     <b-form-input id="input-login2" v-model="formLogin.password" type="password" required placeholder="Enter password"></b-form-input>
                 </b-form-group>
 
@@ -77,6 +77,7 @@
                         }else {
                             this.$emit('UserObtained', response.data[0])
                             this.AuthError = "";
+                            this.$router.push("/");
                         }
                     });
             },
@@ -94,7 +95,7 @@
 
 <style >
     .center{
-        width: fit-content;
+        width: 150px;
         margin-right: auto;
         margin-left: auto;
         margin-top: 200px;

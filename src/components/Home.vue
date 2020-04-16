@@ -1,7 +1,6 @@
 <template>
     <div class="row">
         <div class="col-8">
-            <!--<button v-on:click="isLogged = !isLogged">Change isLogged</button>-->
             <b-form-select v-model="selected" :options="options"></b-form-select>
             <ul>
                 <BookCard v-for="card in activeCards" :info="card">
