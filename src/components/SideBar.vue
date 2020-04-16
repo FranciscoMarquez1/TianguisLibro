@@ -88,7 +88,7 @@ export default {
             }
             else{
                 axios
-                .put("https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?Username="+this.user+"&ISBN="+this.ISBN+"&Price="+this.Price+"&Location="+this.Location)
+                .put("https://cors-anywhere.herokuapp.com/https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?Username="+this.user+"&ISBN="+this.ISBN+"&Price="+this.Price+"&Location="+this.Location)
                 .then(response => (console.log(response.data)));  
                 // console.log("https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?Username="+this.user+"&ISBN="+this.ISBN+"&Price="+this.Price+"&Location="+this.Location);
                 this.ISBN = "";
