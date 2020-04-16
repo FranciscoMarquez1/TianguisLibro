@@ -29,9 +29,12 @@
                 cards: [],
                 selected: null,
                 options: [{ value: null, text: 'Filtrar Categorias' }],
-                Username: 'ChebaCheba',
-                isLogged: false,
+
             }
+        },
+        props: {
+            Username: String,
+            isLogged: Boolean,
         },
         created() {
             axios

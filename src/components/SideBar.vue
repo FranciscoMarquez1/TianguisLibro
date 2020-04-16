@@ -83,17 +83,18 @@ export default {
 
         },
         saleLibro: function(){
-                //https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?Username=ChebaCheba&ISBN=0156067060&Price=1233123&Location=Korea
             if (this.Price == "" || this.Location == "" || this.ISBN == ""){
                 this.error = "Hacen falta datos";
             }
             else{
                 axios
-                .put("https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?Username="+this.user+"&ISBN="+this.ISBN+"&Location="+this.Location)
+                .put("https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?Username="+this.user+"&ISBN="+this.ISBN+"&Price="+this.Price+"&Location="+this.Location)
                 .then(response => (console.log(response.data)));  
-                this.Titulo = "";
-                this.Area = "";
-                this.ISBN = "";   
+                // console.log("https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?Username="+this.user+"&ISBN="+this.ISBN+"&Price="+this.Price+"&Location="+this.Location);
+                this.ISBN = "";
+                this.Price = "";   
+                this.Location = "";   
+
                 this.$bvModal.hide('modal-2');
             }
         },

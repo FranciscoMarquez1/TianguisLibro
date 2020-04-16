@@ -2,7 +2,7 @@
   <div id="app">
 
     <NavBar></NavBar>
-      <router-view v-on:UserObtained="setUser($event)"></router-view>
+      <router-view v-on:UserObtained="setUser($event)" v-bind="myProps"></router-view>
   </div>
 </template>
 
@@ -34,7 +34,12 @@ export default {
       console.log(this.currentUser.isLoggedIn);
     }
 
-  }
+  },
+  computed: {
+    myProps() {
+      if (this.$route.name === 'Home') { return { Username: this.currentUser.username, isLogged: this.currentUser.isLoggedIn}}
+    }
+  },
 }
 </script>
 

@@ -1,9 +1,13 @@
 <template>
     <div class="header">
 
-        <img class="logo" src="../assets/libro-logo.png"/>
-        <router-link class="title" to="/">Tianguis del Libro</router-link>
-        <router-link to="/login">Login</router-link>
+        <router-link to="/">
+            <img class="logo" src="../assets/libro-logo.png"/>
+            <h1 class="title">Tianguis del Libro</h1>
+        </router-link>
+        <router-link to="/login" class="user">
+            <img class="logo" src="../assets/account.svg"/>
+        </router-link>
     </div>
 
 </template>
@@ -27,5 +31,9 @@ export default {
     display: inline-block;
     vertical-align: middle;
     padding-left: 10px;
+    color: black;
+}
+.user {
+    margin-left: 90px;
 }
 </style>
