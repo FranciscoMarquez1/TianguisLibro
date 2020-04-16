@@ -2,7 +2,7 @@
   <div id="app">
 
     <NavBar></NavBar>
-      <router-view></router-view>
+      <router-view v-on:UserObtained="setUser($event)"></router-view>
   </div>
 </template>
 
@@ -11,8 +11,29 @@ import NavBar from "./components/NavBar.vue";
 
 export default {
   name: 'app',
-   components: {
+  components: {
     NavBar
+  },
+  data(){
+    return{
+      currentUser:{
+        username:"",
+        phone:"",
+        isLoggedIn: false
+      }
+    }
+  },
+  methods:{
+    setUser(newUser){
+      this.currentUser.username = newUser.Username;
+      this.currentUser.phone = newUser.Phone;
+      this.currentUser.isLoggedIn = true;
+
+      console.log(this.currentUser.username);
+      console.log(this.currentUser.phone);
+      console.log(this.currentUser.isLoggedIn);
+    }
+
   }
 }
 </script>

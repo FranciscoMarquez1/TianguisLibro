@@ -6,13 +6,12 @@
                     <b-form-input id="input-login1" v-model="formLogin.username" type="text" required placeholder="Enter username"></b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-login-2" label="Password:" label-for="input-login2">
+                <b-form-group id="input-login-2" label="Password:" label-for="input-login2" description="this.AuthError">
                     <b-form-input id="input-login2" v-model="formLogin.password" type="password" required placeholder="Enter password"></b-form-input>
                 </b-form-group>
 
                 <b-button variant="primary" v-on:click="login">Log In</b-button>
                 <b-button variant="primary" v-on:click="showSignUp">Register</b-button>
-                {{user}}
             </b-form>
             <b-form v-if="showRegister">
                 <b-form-group id="input-group-1" label="Username:" label-for="input-1">
@@ -57,7 +56,8 @@
                 user: {
                     username: '',
                     phone: ''
-                }
+                },
+                AuthError: ""
             }
         },
         methods: {
@@ -65,15 +65,20 @@
                 const hash = sha256(this.formRegister.password);
                axios
                   .post('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formRegister.username+"&Hash="+hash+"&Tel="+this.formRegister.phone)
-                    .then(response => (console.log(response.data)));
+                    .then(response => console.log(response.data));
             },
             login() {
                 const hash = sha256(this.formLogin.password);
                 axios
                     .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formLogin.username+"&Hash="+hash)
-                    .then(response => (console.log(response)));
-                console.log('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formRegister.username+"&Hash="+hash)
-
+                    .then(response => {
+                        if (response.data == "Authentication failed. Wrong username or password"){
+                            this.AuthError = response.data;
+                        }else {
+                            this.$emit('UserObtained', response.data[0])
+                            this.AuthError = "";
+                        }
+                    });
             },
             showSignUp(){
                 this.showLogin = false;
