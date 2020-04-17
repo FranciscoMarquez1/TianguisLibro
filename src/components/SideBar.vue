@@ -17,11 +17,11 @@
             <b-modal id="modal-1" title="Subir Libro" hide-footer @hide="emptyError">
                 <b-form>
                     <label>Titulo:</label><br>
-                    <b-form-input type="text" v-model="Titulo"></b-form-input>
+                    <b-form-input type="text" trim v-model="Titulo"></b-form-input>
                     <label>Area:</label><br>
-                    <b-form-input type="text" v-model="Area"></b-form-input>
+                    <b-form-input type="text" trim v-model="Area"></b-form-input>
                     <label>ISBN:</label><br>
-                    <b-form-input type="text" v-model="ISBN"></b-form-input>
+                    <b-form-input type="text" trim v-model="ISBN"></b-form-input>
                 </b-form>  
                 <p style="color: red; padding-top: 5px;"> {{error}}</p>
                 <b-button class="mt-3" block @click="uploadLibro">Subir libro</b-button>
@@ -32,11 +32,11 @@
             <b-modal id="modal-2" title="Vender Libro" hide-footer @hide="emptyError">
                 <b-form>
                     <label>ISBN:</label><br>
-                    <b-form-input type="text" v-model="ISBN"></b-form-input>
+                    <b-form-input type="text" trim v-model="ISBN" ></b-form-input>
                     <label>Precio:</label><br>
-                    <b-form-input type="text" v-model="Price"></b-form-input>
+                    <b-form-input type="text" trim v-model="Price"></b-form-input>
                     <label>Ubicación:</label><br>
-                    <b-form-input type="text" v-model="Location"></b-form-input>
+                    <b-form-input type="text" trim v-model="Location"></b-form-input>
                 </b-form>  
                 <p style="color: red; padding-top: 5px;"> {{error}}</p>
                 <b-button class="mt-3" block @click="saleLibro">Subir libro</b-button>
@@ -107,7 +107,6 @@ export default {
     },
     computed:{
         isDisabled: function(){
-            console.log("cambio");
     	    return !this.isLogged;
         }
     },

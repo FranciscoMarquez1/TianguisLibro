@@ -42,6 +42,9 @@ export default {
     width: 75%;
     display: inline-block;
 }
+.links {
+    display: inline-block;
+}
 .logo {
     height: 34px;
 }
