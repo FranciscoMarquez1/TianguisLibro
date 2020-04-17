@@ -3,7 +3,7 @@
         <div>
             <b-form v-if="showLogin">
                 <b-form-group id="input-login-1" label="Username:" label-for="input-login1">
-                    <b-form-input id="input-login1" v-model="formLogin.username" type="text" required placeholder="Enter username"></b-form-input>
+                    <b-form-input id="input-login1" trim v-model="formLogin.username" type="text" required placeholder="Enter username"></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="input-login-2" label="Password:" label-for="input-login2" v-bind:description="AuthError">
@@ -15,7 +15,7 @@
             </b-form>
             <b-form v-if="showRegister">
                 <b-form-group id="input-group-1" label="Username:" label-for="input-1" v-bind:description="RegisterError">
-                    <b-form-input id="input-1" v-model="formRegister.username" type="text" required placeholder="Enter username"></b-form-input>
+                    <b-form-input id="input-1" trim v-model="formRegister.username" type="text" required placeholder="Enter username"></b-form-input>
                 </b-form-group>
 
                 <b-form-group id="input-group-2" label="Password:" label-for="input-2">
@@ -23,7 +23,7 @@
                 </b-form-group>
 
                 <b-form-group id="input-group-3" label="Phone number:" label-for="input-3" >
-                    <b-form-input id="input-3" v-model="formRegister.phone" type="text" required placeholder="Enter phone number"></b-form-input>
+                    <b-form-input id="input-3" trim v-model="formRegister.phone" type="text" required placeholder="Enter phone number"></b-form-input>
                 </b-form-group>
 
                 <b-button variant="primary" v-on:click="register">Sign Up</b-button>

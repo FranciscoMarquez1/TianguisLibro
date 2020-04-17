@@ -10,7 +10,7 @@
             <div class="col-6 card-column">
                 <p>{{info.Username}}</p>
                 <a v-bind:href="'https://wa.me/' + info.phone">
-                <img class="whatsapp" src="../assets/whatsapp-logo.png">
+                <img class="whatsapp" src="https://tianguis-libro.s3.us-east-2.amazonaws.com/whatsapp-logo.png">
                 </a>
                 <p style="padding-top: 10px">Phone: {{info.phone}}</p>
 

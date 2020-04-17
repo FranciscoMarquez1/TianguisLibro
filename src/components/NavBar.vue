@@ -2,13 +2,13 @@
     <div class="header">
         <div class="header-main">
             <router-link to="/">
-                <img class="libro" src="../assets/libro-logo.png"/>
+                <img class="libro" src="https://tianguis-libro.s3.us-east-2.amazonaws.com/libro-logo.png"/>
                 <h1 class="title">Tianguis del Libro</h1>
             </router-link>
         </div>
         <div class="links">
             <router-link to="/profile" class="user">
-                <img class="logo" src="../assets/account.svg"/>
+                <img class="logo" src="https://tianguis-libro.s3.us-east-2.amazonaws.com/profile-icon.png"/>
             </router-link>
             <router-link to="/login" class="login">
                 <span>Login</span>
