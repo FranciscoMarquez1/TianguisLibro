@@ -14,7 +14,7 @@
                 <b-button variant="primary" v-on:click="showSignUp">Register</b-button>
             </b-form>
             <b-form v-if="showRegister">
-                <b-form-group id="input-group-1" label="Username:" label-for="input-1">
+                <b-form-group id="input-group-1" label="Username:" label-for="input-1" v-bind:description="RegisterError">
                     <b-form-input id="input-1" v-model="formRegister.username" type="text" required placeholder="Enter username"></b-form-input>
                 </b-form-group>
 
@@ -22,7 +22,7 @@
                     <b-form-input id="input-2" v-model="formRegister.password" type="password" required placeholder="Enter password"></b-form-input>
                 </b-form-group>
 
-                <b-form-group id="input-group-3" label="Phone number:" label-for="input-3">
+                <b-form-group id="input-group-3" label="Phone number:" label-for="input-3" >
                     <b-form-input id="input-3" v-model="formRegister.phone" type="text" required placeholder="Enter phone number"></b-form-input>
                 </b-form-group>
 
@@ -57,20 +57,25 @@
                     username: '',
                     phone: ''
                 },
-                AuthError: ""
+                AuthError: "",
+                RegisterError: ""
             }
         },
         methods: {
             register() {
                 const hash = sha256(this.formRegister.password);
                axios
-                  .post('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formRegister.username+"&Hash="+hash+"&Tel="+this.formRegister.phone)
-                    .then(response => console.log(response.data));
+                  .post('https://cors-anywhere.herokuapp.com/https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formRegister.username+"&Hash="+hash+"&Tel="+this.formRegister.phone)
+                    .then(response => {
+                        this.showRegister = false;
+                        this.showLogin = true;
+                        this.cleanFieldsRegister();
+                    }, response => this.RegisterError = "Sorry ... username already taken!");
             },
             login() {
                 const hash = sha256(this.formLogin.password);
                 axios
-                    .get('https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formLogin.username+"&Hash="+hash)
+                    .get('https://cors-anywhere.herokuapp.com/https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/users?Username='+this.formLogin.username+"&Hash="+hash)
                     .then(response => {
                         if (response.data == "Authentication failed. Wrong username or password"){
                             this.AuthError = response.data;
@@ -78,6 +83,7 @@
                             this.$emit('UserObtained', response.data[0])
                             this.AuthError = "";
                             this.$router.push("/");
+                            this.cleanFieldsLogin();
                         }
                     });
             },
@@ -88,6 +94,15 @@
             showLog(){
                 this.showLogin = true;
                 this.showRegister = false;
+            },
+            cleanFieldsRegister(){
+                this.formRegister.password = "";
+                this.formRegister.phone = "";
+                this.formRegister.username = "";
+            },
+            cleanFieldsLogin(){
+                this.formLogin.password = "";
+                this.formLogin.username = "";
             }
         }
     }
@@ -95,7 +110,7 @@
 
 <style >
     .center{
-        width: 150px;
+        width: 300px;
         margin-right: auto;
         margin-left: auto;
         margin-top: 200px;
