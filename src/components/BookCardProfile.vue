@@ -36,8 +36,11 @@ export default {
         deleteCard: function(){
             axios
                 .delete('https://cors-anywhere.herokuapp.com/https://wqxmyczq0l.execute-api.us-east-1.amazonaws.com/test/tianguis?ID='+this.info.ID)
-                .then(response => (console.log(response.data)));
-        }
+                .then(this.updateScene);
+        },
+        updateScene: function(){
+            this.$emit('targetDeleted');
+        },
     }
 }
 </script>

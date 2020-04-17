@@ -24,7 +24,7 @@
                     <b-form-input type="text" v-model="ISBN"></b-form-input>
                 </b-form>  
                 <p style="color: red; padding-top: 5px;"> {{error}}</p>
-                <b-button class="mt-3" block @click="uploadLibro">Upload</b-button>
+                <b-button class="mt-3" block @click="uploadLibro">Subir libro</b-button>
 
             </b-modal>            
             <b-button v-b-modal.modal-2 :disabled='isDisabled'>Vender Libro</b-button>
@@ -39,7 +39,7 @@
                     <b-form-input type="text" v-model="Location"></b-form-input>
                 </b-form>  
                 <p style="color: red; padding-top: 5px;"> {{error}}</p>
-                <b-button class="mt-3" block @click="saleLibro">Upload</b-button>
+                <b-button class="mt-3" block @click="saleLibro">Subir libro</b-button>
             </b-modal>    
         </div>
     </div>
@@ -117,10 +117,15 @@ export default {
 
 <style>
 .column-info {
-    margin-top: 40px;
     height: fit-content;
     background-color: #cbe2b0;
     width:80%;
     padding: 15px;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 25px;
+}
+label {
+    margin: 5px 0px;
 }
 </style>

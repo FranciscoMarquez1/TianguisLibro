@@ -116,5 +116,13 @@
         margin-top: 200px;
         padding-bottom: 20px;
     }
+    .btn-primary {
+        background-color: #f3881a;
+        border-color: #f3881a;
+    }
+    .btn-primary:hover {
+        background-color: #f9aa58;
+        border-color: #f9aa58;
+    }
 
 </style>

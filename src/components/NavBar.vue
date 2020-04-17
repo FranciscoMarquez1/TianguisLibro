@@ -1,16 +1,19 @@
 <template>
     <div class="header">
-
-        <router-link to="/">
-            <img class="logo" src="../assets/libro-logo.png"/>
-            <h1 class="title">Tianguis del Libro</h1>
-        </router-link>
+        <div class="header-main">
+            <router-link to="/">
+                <img class="libro" src="../assets/libro-logo.png"/>
+                <h1 class="title">Tianguis del Libro</h1>
+            </router-link>
+        </div>
+        <div class="links">
             <router-link to="/profile" class="user">
                 <img class="logo" src="../assets/account.svg"/>
             </router-link>
             <router-link to="/login" class="login">
                 <span>Login</span>
             </router-link>
+        </div>
     </div>
 
 </template>
@@ -35,17 +38,21 @@ export default {
     height: 70px;
     padding-top:10px;
 }
+.header-main {
+    width: 75%;
+    display: inline-block;
+}
 .logo {
     height: 34px;
+}
+.libro {
+    height: 44px;
 }
 .title {
     display: inline-block;
     vertical-align: middle;
     padding-left: 10px;
     color: black;
-}
-.user {
-    margin-left: 90px;
 }
 .user:hover {
     opacity: 0.5;
